@@ -1,0 +1,55 @@
+<div class="min-h-[90vh] w-[80%] m-auto flex justify-center items-center">
+    <form #event="ngForm" (ngSubmit)="onSubmit(event)" #userForm="ngForm" class="w-[800px] bg-white border-2 border-green-600 p-6 rounded-lg shadow-lg shadow-indigo-500">
+        <div class="mb-6 flex justify-between items-center pr-5">
+            <div class="profile-picture">
+                <img id="profile-image" [src]="url" alt="Profile Picture">
+                <input [disabled]="isDisabled" type="file" id="image" name="image" #imageInput (change)="onFileSelected(imageInput)"  style="display: none">
+                <label for="image" id="edit-button">🖊</label>
+            </div>
+
+            <button (click)="handleEdit()" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5">EDIT</button>
+        </div>
+        <div class="mb-6">
+            <input   [disabled]="isDisabled" type="text" name="username" value="{{user.username}}" [(ngModel)]="user.username"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                minlength="5" placeholder="John" required />
+        </div>
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <div>
+                <input  [disabled]="isDisabled" type="date" id="DOB" name="DOB" value="{{user.DOB}}" [(ngModel)]="user.DOB"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                     required />
+        
+            </div>
+            <div>
+                <input  [disabled]="isDisabled" type="tel" name="phone" value="{{user.phone}}" [(ngModel)]="user.phone"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+                
+            </div>
+        </div>
+        <div class="mb-6">
+            <input  [disabled]="isDisabled" type="email" name="email" value="{{user.email}}" [(ngModel)]="user.email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                minlength="3" placeholder="john.doe@company.com" required />
+           
+        </div>
+        <div class="mb-6">
+            <input  [disabled]="isDisabled" type="password" name="password" value="{{user.password}}" [(ngModel)]="user.password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                minlength="3" placeholder="•••••••••" required />
+            
+        </div>
+        <div class="mb-6">
+            <textarea  [disabled]="isDisabled" name="address" value="{{user.address}}" [(ngModel)]="user.address"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="address" required ></textarea>
+           
+        </div>
+        
+        <button  [disabled]="isDisabled" type="submit"
+            class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Update
+        </button>
+    </form>
+</div>
